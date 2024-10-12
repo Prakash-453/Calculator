@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        #Calculator {
+            height: 500px;
+            width: 400px;
+            background-color: crimson;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #buttons {
+            width: 368px;
+            height: 380px;
+            background-color: rgb(177, 30, 235);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            padding: 20px;
+            margin-left: 16px;
+            margin-top: 10px;
+            border-radius: 24px;
+        }
+
+        button:hover {
+            background-color: chartreuse;
+        }
+
+        button {
+            background-color: cyan;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .color {
+            color: white;
+            font-size: 24px;
+            background-color: #ff4500;
+        }
+
+        .color1 {
+            color: white;
+            background-color: #32a846;
+        }
+    </style>
+</head>
+<body>
+    <div id="Calculator">
+        <input type="text" id="display" value="0" 
+        style="
+          height: 81px;
+          width: 364px;
+          margin-top: 15px;
+          margin-left: 16px;
+          border-radius: 15px;
+          font-size: 60px;
+          text-align: right;
+        " />
+        <div id="buttons">
+            <button onclick="AC()">AC</button>
+            <button onclick="DEL()">DEL</button>
+            <button onclick="addvalue('%')">%</button>
+            <button onclick="clearscreen()" class="color">C</button>
+            <button onclick="addvalue(7)">7</button>
+            <button onclick="addvalue(8)">8</button>
+            <button onclick="addvalue(9)">9</button>
+            <button onclick="addvalue('+')" class="color">+</button>
+            <button onclick="addvalue(4)">4</button>
+            <button onclick="addvalue(5)">5</button>
+            <button onclick="addvalue(6)">6</button>
+            <button onclick="addvalue('-')" class="color">-</button>
+            <button onclick="addvalue(3)">3</button>
+            <button onclick="addvalue(2)">2</button>
+            <button onclick="addvalue(1)">1</button>
+            <button onclick="addvalue('*')" class="color">*</button>
+            <button onclick="addvalue('.')">.</button>
+            <button onclick="addvalue(0)">0</button>
+            <button onclick="addvalue('/')" class="color">/</button>
+            <button onclick="result()" class="color1">=</button>
+        </div>
+    </div>
+    
+    <script>
+
+        let cal = document.getElementById("display");
+
+        function AC() {
+            cal.value = "0";
+        }
+
+        function DEL() {
+            if (cal.value.length === 1) {
+                cal.value = "0";
+            } else {
+                cal.value = cal.value.slice(0, -1);
+            }
+        }
+
+        function clearscreen() {
+            cal.value = "0";
+        }
+
+        function addvalue(x) {
+            if (cal.value === "0") {
+                cal.value = x;
+            } else {
+                cal.value += x;
+            }
+        }
+
+        function result() {
+            let a = eval(cal.value);
+            cal.value = a;
+        }
+
+    </script>
+</body>
+</html>
